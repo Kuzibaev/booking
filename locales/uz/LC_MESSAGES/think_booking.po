@@ -1,0 +1,36 @@
+# Uzbek translations for Think Booking.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the Think Booking
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Think Booking VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-02-28 09:42+0500\n"
+"PO-Revision-Date: 2022-09-10 17:31+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uz\n"
+"Language-Team: uz <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
+#: app/api/client/v1/test.py:13
+msgid "This is a test string"
+msgstr ""
+
+#: app/api/client/v1/test.py:14
+msgid "Hello world"
+msgstr ""
+
+#: app/schemas/base.py:74
+msgid "Invalid phone number format"
+msgstr ""
+
+#~ msgid "Please provide a valid mobile phone number"
+#~ msgstr ""
+

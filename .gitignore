@@ -1,0 +1,11 @@
+.idea
+*.py[cod]
+*$py.class
+__pycache__/
+.env
+.pytest_cache
+files
+cdn
+nano.save
+poetry.lock
+pyproject.toml

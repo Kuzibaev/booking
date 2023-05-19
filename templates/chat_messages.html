@@ -1,0 +1,158 @@
+{% extends "layout.html" %}
+{% block head %}
+<style>
+    #message-textarea{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .message-container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .user-message {
+        padding: 25px 15px 10px;
+        margin: 15px;
+        border-radius: 10px;
+        background: #182533;
+    }
+
+    .operator-message {
+        padding: 15px 10px;
+        margin: 15px;
+        border-radius: 10px;
+        background: #2b5278;
+    }
+
+    h4, p {
+        margin: 0;
+    }
+
+    ul li {
+        list-style-type: none;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .opacity-6 {
+        opacity: 0.6;
+    }
+
+    .text-white {
+        color: white;
+    }
+
+    .message-container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .message {
+        display: inline-block;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .message-date {
+        margin-top: 15px;
+        float: right;
+    }
+
+    .user-message {
+        border-radius: 10px;
+        background: #182533;
+    }
+
+
+    .operator-message {
+        border-radius: 10px;
+        background: #2b5278;
+    }
+
+    .float-right {
+        float: right;
+        overflow: auto;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .form-container {
+        max-width: 70%;
+        margin: 20px auto;
+    }
+
+
+
+
+
+
+
+</style>
+{% endblock %}
+{% block content %}
+<div class="col-12">
+    <div class="card">
+        <div class="card-header justify-content-between">
+            <div class="card-title">
+                <div class="">
+                    <h2 class="m-0">
+                        Chat with {{session.user.first_name}}
+                    </h2>
+                    <span class="d-block opacity-80">Status: <span>{{session.status.value}}</span></span>
+                    <span class="d-block opacity-80">Topic: <span>{{session.topic.title}}</span></span>
+                </div>
+            </div>
+            <a href="{{back_url}}"><i class="fa-solid fa-xmark fa-2x text-danger"></i></a>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <ul class="message-container text-white">
+                {% for message in messages %}
+                {% if message.from_whom.value == "user" %}
+                <li>
+                    <div class="message user-message">
+                        <h4 class="opacity-6">{{message.user}}</h4>
+                        <p>{{ message.message}}</p>
+                        <p class="message-date opacity-6">{{ message.created_at.strftime("%d.%m.%Y %H:%M:%S") }}</p>
+                    </div>
+                </li>
+                {% else %}
+                <li class="clearfix">
+                    <div class="message operator-message float-right">
+                        <p>{{ message.message}}</p>
+                        <p class="message-date opacity-6">{{ message.created_at.strftime("%d.%m.%Y %H:%M:%S") }}</p>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {%else%}
+            <p class="text-center opacity-70">Messages not found</p>
+            {%endif%}
+        </div>
+        <div class="card-footer">
+            {% if session.status.value == "open" %}
+            <form method="post">
+                <div class="row">
+                    <div class="col-10">
+                        <textarea id="message-textarea" class="border border-1 p-1 w-100" name="message"></textarea>
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" class="btn btn-success w-100" value="Send">
+                    </div>
+                </div>
+            </form>
+            {% else %}
+                <p class="opacity-80 text-warning text-center">Session is closed</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
